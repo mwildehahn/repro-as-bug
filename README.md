@@ -29,3 +29,20 @@ Stack trace:
 #1 /Users/mh/work/repro-as-bug/main.php(54): main()
 #2 {main}
 ```
+
+Switching line 40 to:
+
+```
+return type_assert_type($input, shape_base::class);
+```
+
+ie.
+
+```
+function validate_one(shape_one $input): shape_base {
+  print_r($input);
+  return type_assert_type($input, shape_base::class);
+}
+```
+
+Fixes the issue. 
