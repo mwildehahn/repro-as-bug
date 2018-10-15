@@ -1,0 +1,12 @@
+{
+    "name": "mh/repro-as-bug",
+    "require": {
+        "hhvm/type-assert": "^3.2"
+    },
+    "authors": [
+        {
+            "name": "Michael Hahn",
+            "email": "mh@slack-corp.com"
+        }
+    ]
+}
