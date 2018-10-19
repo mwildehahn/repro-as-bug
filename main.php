@@ -21,23 +21,20 @@ type shape_one = shape(
 );
 
 function main(): void {
-  $test = generate_one();
-  $test2 = validate_one(type_assert_type($test, shape_one::class));
-  print_r(['test' => $test, 'test2' => $test2]);
-}
+  $test = type_assert_type(
+    shape(
+      'type' => 'test',
+      'one' => 5,
+    ),
+    shape_one::class,
+  );
 
-function generate_one(): shape_base {
-  return shape(
-    'type' => 'test',
-    'one' => 1,
-    'fields' => vec['1', '2', '3'],
-  ) as shape_base;
-}
+  if ($test is shape_base) {
+    echo "works!\n";
+  } else {
+    echo "failed!\n";
+  }
 
-
-function validate_one(shape_one $input): shape_base {
-  print_r($input);
-  return $input as shape_base;
 }
 
 function type_assert_type<T>(mixed $var, typename<T> $expected_type): T {
